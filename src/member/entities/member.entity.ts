@@ -5,8 +5,8 @@ export type MemberDocument = Member & Document;
 
 @Schema({ 'collection': 'member' })
 export class Member {
-    @Prop()
-    id: number;
+    @Prop({ required: true })
+    student_id: number;
 
     @Prop()
     name: string;
@@ -15,7 +15,7 @@ export class Member {
     major: string;
 
     @Prop()
-    Factory: string;
+    factory: string;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);
