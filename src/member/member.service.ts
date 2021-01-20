@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateMemberDto } from './dto/create-member.dto';
+import { UpdateMemberDto } from './dto/update-member.dto';
 import { Member, MemberDocument } from './entities/member.entity';
 
 @Injectable()
@@ -21,10 +22,15 @@ export class MemberService {
     return createMember.save();
   }
 
-  async update(_id: String) {
+  async update(_id: String, UpdateMemberDto: UpdateMemberDto) {
     await this.memberModel.updateOne(
       { _id: _id },
-      { name: "Surachet Ponfuthakul", major: "SE", factory: "CoC" },
+      {
+        student_id: UpdateMemberDto.student_id,
+        name: UpdateMemberDto.name,
+        major: UpdateMemberDto.major,
+        factory: UpdateMemberDto.factory
+      },
       { upsert: true },
     )
   }

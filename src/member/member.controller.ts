@@ -25,7 +25,7 @@ export class MemberController {
 
   @Put('/update/:_id')
   async updateOne(@Param() params: memberIdDTO, @Body() UpdateMemberDto: UpdateMemberDto) {
-    return await this.memberService.update(params._id);
+    return await this.memberService.update(params._id, UpdateMemberDto);
   }
 
   @Delete('/detele/:_id')
